@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4d4d4d</color>
+    <color name="colorPrimaryDark">#252525</color>
+    <color name="colorAccent">#f8981d</color>
+    <color name="colorStrongAccent">#c45319</color>
+    <color name="colorLightText">#878787</color>
+    <color name="colorSuperLightText">#C8C8C8</color>
+
+    <color name="colorRepositoryContentBgr">#ffffff</color>
+    <color name="colorRepositoryContentBgrSelected">#f5f5f5</color>
+    <color name="colorRepositoryContentFile">#4078c0</color>
+    <color name="colorRepositoryContentDescription">#888888</color>
+    <color name="colorRepositoryContentBottomLine">#eeeeee</color>
+
+</resources>

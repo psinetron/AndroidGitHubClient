@@ -1,0 +1,25 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="cardview_horizontal_margin">8dp</dimen>
+    <dimen name="cardview_vartical_margin">4dp</dimen>
+    <dimen name="cardview_text_margin">8dp</dimen>
+    <dimen name="cardview_inner_padding">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="logo_margin">16dp</dimen>
+    <dimen name="edittext_margin">16dp</dimen>
+    <dimen name="big_button_paddings_horizontal">16dp</dimen>
+    <dimen name="big_button_paddings_vertical">24dp</dimen>
+    <dimen name="separator_margin">4dp</dimen>
+
+    <dimen name="toolBarIconSize">48dp</dimen>
+
+    <dimen name="big_avatar_size">80dp</dimen>
+    <dimen name="big_avatar_margin">12dp</dimen>
+
+    <dimen name="repositoryTypeIconSize">24dp</dimen>
+    <dimen name="repositoryInnerPadding">4dp</dimen>
+
+</resources>

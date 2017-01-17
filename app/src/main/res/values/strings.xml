@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">GitHub Client</string>
+    <string name="brief_overview">Developed by Fail Shahmaev\nas an universal test task</string>
+
+    <!-- Base -->
+    <string name="preloader">Preloader</string>
+    <string name="logo">Logo</string>
+    <string name="background">Background</string>
+    <string name="avatar">Avatar</string>
+    <string name="fileicon">File icon</string>
+
+    <!-- Splash Screen -->
+    <string name="splash_screen_logo">GitHub logo</string>
+    <string name="splash_screen_preloader">Preloader</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="open_wireless_dialog">SETTINGS</string>
+    <string name="retry_connection">RETRY</string>
+
+    <!-- Authorization -->
+    <string name="auth_title">Sign in</string>
+    <string name="auth_sign_in">Sign in</string>
+    <string name="auth_username">Username</string>
+    <string name="auth_userpassword">Password</string>
+    <string name="auth_sign_in_button">Sign into GitHub</string>
+    <string name="incorrect_login_or_password">Incorrect login or password</string>
+
+    <!-- Repositories -->
+    <string name="repo_built_by">Built by %1$s</string>
+    <string name="repo_stargazers_count">%1$d stars</string>
+    <string name="repo_title">Repositories</string>
+    <string name="repo_search_title">Search repositories</string>
+    <string name="repo_info_line">%1$s • %2$d stars • Built by %3$s</string>
+
+    <!-- Others -->
+    <string name="unknown_error">Unknown error. Please try again later</string>
+    <string name="text_separator">•</string>
+    <string name="search_hint">Search repositories</string>
+    <string name="bytes">bytes</string>
+    <string name="kbytes">KB</string>
+    <string name="mbytes">MB</string>
+    <string name="gbytes">GB</string>
+    <string name="tbytes">TB</string>
+    <string name="pbytes">PB</string>
+
+    <!-- Integers -->
+    <integer name="time_out_no_internet_time">3000</integer>
+    <string name="title_activity_repositories_act">Repositories_act</string>
+
+    <!-- Clients secrets -->
+    <string name="oauth_client_id">e9ee03f54829cab2679d</string> <!-- Enter your client_id (see the https://developer.github.com/v3/oauth_authorizations/) -->
+    <string name="title_activity_repository_detail_act">Repository_detail_act</string>
+    <string name="title_activity_repository_content_act">Repository_content_act</string>
+
+
+</resources>
