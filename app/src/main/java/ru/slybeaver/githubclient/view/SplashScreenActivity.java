@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import butterknife.BindView;
 import ru.slybeaver.githubclient.gitclientrxjava.R;
 import ru.slybeaver.githubclient.presenter.Presenter;
 import ru.slybeaver.githubclient.presenter.SplashScreenPresenter;
@@ -22,17 +23,17 @@ public class SplashScreenActivity extends BaseActivity implements SplashScreenVi
 
     private SplashScreenPresenter presenter = new SplashScreenPresenter(this);
 
-    private ImageView imageRadialPreloader = null;
-    private ImageView imageLogo = null;
-    private RelativeLayout SplashScreenRelativeLayout = null;
+    @BindView(R.id.imageRadialPreloader)
+    ImageView imageRadialPreloader = null;
+    @BindView(R.id.imageLogo)
+    ImageView imageLogo = null;
+    @BindView(R.id.SplashScreenRelativeLayout)
+    RelativeLayout SplashScreenRelativeLayout = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        imageRadialPreloader = (ImageView) findViewById(R.id.imageRadialPreloader);
-        imageLogo = (ImageView) findViewById(R.id.imageLogo);
-        SplashScreenRelativeLayout = (RelativeLayout) findViewById(R.id.SplashScreenRelativeLayout);
     }
 
     @Override
@@ -48,13 +49,17 @@ public class SplashScreenActivity extends BaseActivity implements SplashScreenVi
 
     @Override
     public void showError(String error) {
-        if (SplashScreenRelativeLayout==null){return;}
+        if (SplashScreenRelativeLayout == null) {
+            return;
+        }
         Snackbar.make(SplashScreenRelativeLayout, error, Snackbar.LENGTH_LONG).show();
     }
 
     @Override
     public void showError(int id) {
-        if (SplashScreenRelativeLayout==null){return;}
+        if (SplashScreenRelativeLayout == null) {
+            return;
+        }
         Snackbar.make(SplashScreenRelativeLayout,
                 getString(id),
                 Snackbar.LENGTH_INDEFINITE).setAction(getString(R.string.retry_connection),

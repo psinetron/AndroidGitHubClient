@@ -9,5 +9,4 @@ public interface Presenter {
 
     void onStop();
 
-
 }

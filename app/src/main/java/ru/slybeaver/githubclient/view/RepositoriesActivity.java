@@ -15,11 +15,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.slybeaver.githubclient.gitclientrxjava.R;
 import ru.slybeaver.githubclient.model.dto.RepositoryDTO;
 import ru.slybeaver.githubclient.presenter.Presenter;
 import ru.slybeaver.githubclient.presenter.RepositoriesPresenter;
 import ru.slybeaver.githubclient.view.adapters.RepositoryListAdapter;
+
 import java.util.List;
 
 /**
@@ -30,12 +33,18 @@ import java.util.List;
 public class RepositoriesActivity extends BaseActivity implements RepositoriesView {
 
     private RepositoriesPresenter presenter = new RepositoriesPresenter(this);
-    private CoordinatorLayout reposCoordinatorLayout = null;
-    private RecyclerView recyclerView = null;
-    private SwipeRefreshLayout swipeRefreshLayout = null;
-    private AppBarLayout appBar = null;
-    private Toolbar toolbar = null;
-    private ImageView imageRadialPreloader = null;
+    @BindView(R.id.reposCoordinatorLayout)
+    CoordinatorLayout reposCoordinatorLayout;
+    @BindView(R.id.ReposRecyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.appBar)
+    AppBarLayout appBar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.imageRadialPreloader)
+    ImageView imageRadialPreloader = null;
 
     @Override
     protected Presenter getPresenter() {
@@ -46,23 +55,17 @@ public class RepositoriesActivity extends BaseActivity implements RepositoriesVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repositories);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         if (toolbar != null) {
             toolbar.setTitle(getString(R.string.repo_title));
         }
         setSupportActionBar(toolbar);
-
-        reposCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.reposCoordinatorLayout);
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-        recyclerView = (RecyclerView) findViewById(R.id.ReposRecyclerView);
-        imageRadialPreloader = (ImageView) findViewById(R.id.imageRadialPreloader);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         if (recyclerView != null) {
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(layoutManager);
         }
-        appBar = (AppBarLayout) findViewById(R.id.appBar);
 
         if (presenter != null) {
             presenter.onCreate(savedInstanceState, getIntent());
@@ -105,7 +108,6 @@ public class RepositoriesActivity extends BaseActivity implements RepositoriesVi
             presenter.onNewIntent(intent);
         }
     }
-
 
 
     @Override
@@ -154,6 +156,8 @@ public class RepositoriesActivity extends BaseActivity implements RepositoriesVi
     @Override
     public void hideLoading() {
         hidePreloader(imageRadialPreloader, recyclerView);
-        if (swipeRefreshLayout!=null){swipeRefreshLayout.setRefreshing(false);}
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 }

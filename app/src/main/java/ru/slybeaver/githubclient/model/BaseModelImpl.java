@@ -51,7 +51,6 @@ public class BaseModelImpl implements BaseModel {
         return apiInterface.getMyRepos(authorization);
     }
 
-
     @Override
     public Observable<SearchReposResultDTO> searchRepos(String body, boolean fromCache) {
         if (fromCache) {
@@ -94,4 +93,5 @@ public class BaseModelImpl implements BaseModel {
         }
         return apiInterface.getFileContent(url);
     }
+
 }

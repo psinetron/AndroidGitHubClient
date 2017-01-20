@@ -1,12 +1,10 @@
 package ru.slybeaver.githubclient.model.api;
 
-
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.*;
 import ru.slybeaver.githubclient.model.dto.*;
-
 
 import java.util.List;
 

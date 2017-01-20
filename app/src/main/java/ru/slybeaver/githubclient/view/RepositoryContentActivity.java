@@ -10,11 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.slybeaver.githubclient.gitclientrxjava.R;
 import ru.slybeaver.githubclient.model.dto.RepositoryContentDTO;
 import ru.slybeaver.githubclient.presenter.Presenter;
 import ru.slybeaver.githubclient.presenter.RepositoryContentPresenter;
 import ru.slybeaver.githubclient.view.adapters.RepositoryContentListAdapter;
+
 import java.util.ArrayList;
 
 /**
@@ -25,11 +28,16 @@ import java.util.ArrayList;
 public class RepositoryContentActivity extends BaseActivity implements RepositoryContentView {
 
     private RepositoryContentPresenter presenter = new RepositoryContentPresenter(this);
-    private CoordinatorLayout contextCoordinatorLayout = null;
-    private RecyclerView recyclerView = null;
-    private SwipeRefreshLayout swipeRefreshLayout = null;
-    private ImageView imageRadialPreloader = null;
-    private Toolbar toolbar = null;
+    @BindView(R.id.contextCoordinatorLayout)
+    CoordinatorLayout contextCoordinatorLayout;
+    @BindView(R.id.contentRecyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.imageRadialPreloader)
+    ImageView imageRadialPreloader;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected Presenter getPresenter() {
@@ -40,17 +48,13 @@ public class RepositoryContentActivity extends BaseActivity implements Repositor
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repository_content);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        contextCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.contextCoordinatorLayout);
-        recyclerView = (RecyclerView) findViewById(R.id.contentRecyclerView);
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-        imageRadialPreloader = (ImageView) findViewById(R.id.imageRadialPreloader);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         if (recyclerView != null) {
@@ -110,13 +114,15 @@ public class RepositoryContentActivity extends BaseActivity implements Repositor
 
     @Override
     public void showLoading() {
-        showPreloader(imageRadialPreloader,recyclerView,this);
+        showPreloader(imageRadialPreloader, recyclerView, this);
     }
 
     @Override
     public void hideLoading() {
-        hidePreloader(imageRadialPreloader,recyclerView);
-        if (swipeRefreshLayout!=null){swipeRefreshLayout.setRefreshing(false);}
+        hidePreloader(imageRadialPreloader, recyclerView);
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override

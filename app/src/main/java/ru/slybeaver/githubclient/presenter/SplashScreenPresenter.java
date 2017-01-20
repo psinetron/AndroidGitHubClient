@@ -1,6 +1,5 @@
 package ru.slybeaver.githubclient.presenter;
 
-
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -10,7 +9,6 @@ import ru.slybeaver.githubclient.managers.StorageManager;
 import ru.slybeaver.githubclient.view.BaseView;
 import ru.slybeaver.githubclient.view.SplashScreenView;
 import java.io.IOException;
-
 
 /**
  * Created by psinetron on 11.01.2017.

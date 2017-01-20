@@ -7,6 +7,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.github.kbiakov.codeview.CodeView;
 import ru.slybeaver.githubclient.gitclientrxjava.R;
 import ru.slybeaver.githubclient.presenter.FileContentPresenter;
@@ -21,34 +23,34 @@ public class FileContentActivity extends BaseActivity implements FileContentView
 
     private FileContentPresenter presenter = new FileContentPresenter(this);
 
-    private CodeView code_view = null;
-    private CoordinatorLayout contextCoordinatorLayout = null;
-    private SwipeRefreshLayout swipeRefreshLayout = null;
-    private ImageView imageRadialPreloader = null;
-    private Toolbar toolbar = null;
+    @BindView(R.id.code_view)
+    CodeView code_view;
+    @BindView(R.id.contextCoordinatorLayout)
+    CoordinatorLayout contextCoordinatorLayout;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.imageRadialPreloader)
+    ImageView imageRadialPreloader;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filecontent);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-
-        contextCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.contextCoordinatorLayout);
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-        imageRadialPreloader = (ImageView) findViewById(R.id.imageRadialPreloader);
-        code_view = (CodeView) findViewById(R.id.code_view);
-
         if (swipeRefreshLayout != null) {
             swipeRefreshLayout.setOnRefreshListener(() -> presenter.onRefresh());
         }
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        presenter.onCreate(getIntent());
+        if (presenter != null) {
+            presenter.onCreate(getIntent());
+        }
     }
 
 
@@ -68,13 +70,15 @@ public class FileContentActivity extends BaseActivity implements FileContentView
 
     @Override
     public void showLoading() {
-        showPreloader(imageRadialPreloader,code_view,this);
+        showPreloader(imageRadialPreloader, code_view, this);
     }
 
     @Override
     public void hideLoading() {
-        hidePreloader(imageRadialPreloader,code_view);
-        if (swipeRefreshLayout!=null){swipeRefreshLayout.setRefreshing(false);}
+        hidePreloader(imageRadialPreloader, code_view);
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
@@ -109,7 +113,7 @@ public class FileContentActivity extends BaseActivity implements FileContentView
 
     @Override
     public void setToolBarTitle(String title) {
-        if (toolbar!=null){
+        if (toolbar != null) {
             toolbar.setTitle(title);
         }
     }

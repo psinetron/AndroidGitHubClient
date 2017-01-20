@@ -10,27 +10,41 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import ru.slybeaver.githubclient.gitclientrxjava.R;
 import ru.slybeaver.githubclient.presenter.AuthorizationPresenter;
 import ru.slybeaver.githubclient.presenter.Presenter;
-
 
 public class AuthorizationActivity extends BaseActivity implements AuthorizationView {
 
     private AuthorizationPresenter presenter = new AuthorizationPresenter(this);
 
+    @BindView(R.id.imageLogo)
+    ImageView imageLogo;
+    @BindView(R.id.userPasswordTxt)
+    EditText userPasswordTxt;
+    @BindView(R.id.userNameTxt)
+    EditText userNameTxt;
+    @BindView(R.id.imageRadialPreloader)
+    ImageView imageRadialPreloader;
+
+
+    @OnClick(R.id.signInButton)
+    void signIn() {
+        if (presenter != null) {
+            presenter.authorizationClick();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authorization);
-        Button signInButton = (Button) findViewById(R.id.signInButton);
-        if (signInButton!=null){
-            signInButton.setOnClickListener(v->{if (presenter!=null){presenter.authorizationClick();}});
-        }
+        ButterKnife.bind(this);
     }
 
 
@@ -41,7 +55,6 @@ public class AuthorizationActivity extends BaseActivity implements Authorization
 
     @Override
     public void authorizationComplete() {
-        ImageView imageLogo = (ImageView) findViewById(R.id.imageLogo);
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageLogo, "main_logo");
         Bundle bundle = options.toBundle();
         Intent intent = new Intent(this, RepositoriesActivity.class);
@@ -56,10 +69,12 @@ public class AuthorizationActivity extends BaseActivity implements Authorization
     @Override
     public void authorizationFailed() {
         Animation negativeAnimation = AnimationUtils.loadAnimation(this, R.anim.negative_action);
-        ImageView imageLogo = (ImageView) findViewById(R.id.imageLogo);
-        if (imageLogo!=null){imageLogo.startAnimation(negativeAnimation);}
-        EditText userPasswordTxt = (EditText) findViewById(R.id.userPasswordTxt);
-        if (userPasswordTxt != null) {userPasswordTxt.setText("");}
+        if (imageLogo != null) {
+            imageLogo.startAnimation(negativeAnimation);
+        }
+        if (userPasswordTxt != null) {
+            userPasswordTxt.setText("");
+        }
     }
 
     @Override
@@ -70,15 +85,17 @@ public class AuthorizationActivity extends BaseActivity implements Authorization
 
     @Override
     public String getUserLogin() {
-        TextView userNameTxt = (TextView) findViewById(R.id.userNameTxt);
-        if (userNameTxt!=null){return userNameTxt.getText().toString();}
+        if (userNameTxt != null) {
+            return userNameTxt.getText().toString();
+        }
         return null;
     }
 
     @Override
     public String getUserPassword() {
-        TextView userPasswordTxt = (TextView) findViewById(R.id.userPasswordTxt);
-        if (userPasswordTxt!=null){return userPasswordTxt.getText().toString();}
+        if (userPasswordTxt != null) {
+            return userPasswordTxt.getText().toString();
+        }
         return null;
     }
 
@@ -94,7 +111,6 @@ public class AuthorizationActivity extends BaseActivity implements Authorization
 
     @Override
     public void showLoading() {
-        ImageView imageRadialPreloader = (ImageView) findViewById(R.id.imageRadialPreloader);
         if (imageRadialPreloader != null) {
             imageRadialPreloader.setVisibility(View.VISIBLE);
             Animation loadingAnimation = AnimationUtils.loadAnimation(this, R.anim.preloader_radial);
@@ -104,7 +120,6 @@ public class AuthorizationActivity extends BaseActivity implements Authorization
 
     @Override
     public void hideLoading() {
-        ImageView imageRadialPreloader = (ImageView) findViewById(R.id.imageRadialPreloader);
         if (imageRadialPreloader != null) {
             imageRadialPreloader.setVisibility(View.INVISIBLE);
             imageRadialPreloader.clearAnimation();

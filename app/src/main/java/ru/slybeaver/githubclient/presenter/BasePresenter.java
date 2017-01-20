@@ -6,7 +6,6 @@ import ru.slybeaver.githubclient.model.BaseModel;
 import ru.slybeaver.githubclient.model.BaseModelImpl;
 import ru.slybeaver.githubclient.view.BaseView;
 
-
 /**
  * Created by psinetron on 10.01.2017.
  * http://slybeaver.ru
@@ -16,7 +15,7 @@ abstract class BasePresenter implements Presenter {
 
     protected BaseModel model = new BaseModelImpl();
 
-    CompositeDisposable compositeDisposable = new CompositeDisposable();
+    protected CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     void addDisposable(Disposable subscription) {
         compositeDisposable.add(subscription);

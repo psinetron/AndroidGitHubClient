@@ -108,7 +108,6 @@ public class RepositoryContentListAdapter extends RecyclerView.Adapter<Repositor
         return inBytes + " " + sizesArray.get(sizeLen);
     }
 
-
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvFileName;
         private TextView tvSize;

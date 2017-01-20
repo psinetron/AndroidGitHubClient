@@ -2,7 +2,6 @@ package ru.slybeaver.githubclient.managers;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import java.util.Stack;
 
 /**
