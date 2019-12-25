@@ -87,7 +87,7 @@ public class AuthorizationPresenter extends BasePresenter {
         JSONObject body = new JSONObject();
         try {
             body.put("client_secret", Const.OAUTH_CLIENT_SECRET);
-            body.put("note", "PGitHubClient");
+            body.put("note", "PClient");
             JSONArray scopes = new JSONArray();
             scopes.put("public_repo");
             scopes.put("user");

@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">GitHub Client</string>
-    <string name="brief_overview">Developed by Fail Shahmaev\nas an universal test task</string>
+    <string name="app_name">OpenHb Client</string>
+    <string name="brief_overview">opensource client</string>
 
     <!-- Base -->
     <string name="preloader">Preloader</string>
@@ -10,7 +10,7 @@
     <string name="fileicon">File icon</string>
 
     <!-- Splash Screen -->
-    <string name="splash_screen_logo">GitHub logo</string>
+    <string name="splash_screen_logo">OpenHb logo</string>
     <string name="splash_screen_preloader">Preloader</string>
     <string name="no_internet_connection">No internet connection</string>
     <string name="open_wireless_dialog">SETTINGS</string>
@@ -21,7 +21,7 @@
     <string name="auth_sign_in">Sign in</string>
     <string name="auth_username">Username</string>
     <string name="auth_userpassword">Password</string>
-    <string name="auth_sign_in_button">Sign into GitHub</string>
+    <string name="auth_sign_in_button">Sign into</string>
     <string name="incorrect_login_or_password">Incorrect login or password</string>
 
     <!-- Repositories -->

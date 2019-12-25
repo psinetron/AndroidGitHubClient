@@ -100,14 +100,8 @@ public class SplashScreenActivity extends BaseActivity implements SplashScreenVi
 
     @Override
     public void authorizationFailed() {
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageLogo, "main_logo");
-        Bundle bundle = options.toBundle();
         Intent intent = new Intent(this, AuthorizationActivity.class);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            startActivity(intent, bundle);
-        } else {
-            startActivity(intent);
-        }
+        startActivity(intent);
         finish();
     }
 
